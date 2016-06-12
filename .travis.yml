@@ -1,5 +1,16 @@
-sudo: false
 language: ruby
+bundler_args: "--retry=3 --jobs=3"
+cache: bundler
+sudo: false
 rvm:
   - 2.3.1
-before_install: gem install bundler -v 1.12.5
+  - 2.3.0
+  - 2.2
+  - 2.1
+  - 2.0
+  - ruby-head
+matrix:
+  allow_failures:
+    - rvm: 2.0
+    - rvm: ruby-head
+  fast_finish: true
